@@ -1,63 +1,74 @@
 //simple rps
 //user hand
 //pc hand
-//print winner
-//play rounds
+//compare hands
+//display winner
 
-console.log('hello world')
+//const button = document.querySelector('.rock')
+//console.log(button.innerHTML)
 
-user = prompt('rock paper or scissors?')
-console.log('you pick '+ user.toUpperCase())
+console.log('Rock Paper Scissors? ')
 
-x = Math.floor(Math.random()*3)
-y = 5
-z = 'rock'
+userchoice = prompt('rock paper or scissors?')
+
+console.log('you pick',userchoice.toLowerCase())
+
+pcchoice = getpcchoice()
+
+playround();
+
+
+//numberofrounds = 5
+//z = 'rock'
 
 //pc = getcomputerchoice();
 
 function getpcchoice(){
-    rx = Math.floor(Math.random()*3);
-    if (rx === 0){
-        console.log('computer picks ROCK');
+    randomnumber = Math.floor(Math.random()*3)
+    if (randomnumber === 0){
+        console.log('computer picks rock');
         return 'rock';
-    } else if (rx===1) {
-        console.log('computer picks PAPER');
+    } else if (randomnumber===1) {
+        console.log('computer picks paper');
         return 'paper';
-    } else if (rx === 2){
-        console.log('computer picks Scissors');
+    } else if (randomnumber === 2){
+        console.log('computer picks scissors');
         return 'scissors';
     } else {
         console.log('error');
     }
 }
 
-pc = getpcchoice()
-
-
-function game(){
-    if (user == pc){
-        console.log('game is a TIE')
-    }else if ((user == 'rock' && pc == 'scissors')||(user == 'paper' && pc == 'rock')||(user == 'scissors' && pc == 'paper')){
-        console.log('You WIN')
-    }else{
-        console.log('you LOSE')
-    }
-}
-
-
-
 function playround(){
-    for (let i = 0; i < 5; i++) {
-        game()
-        
+    if (userchoice === pcchoice){
+            console.log('TIE')
+    } else if (
+        (userchoice == 'rock' && pcchoice == 'scissors')||
+        (userchoice == 'paper' && pcchoice == 'rock')||
+        (userchoice == 'scissors' && pcchoice == 'paper')){
+            console.log('WIN')
+    } else if(
+        (userchoice == 'rock' && pcchoice == 'paper')||
+        (userchoice == 'paper' && pcchoice == 'scissors')||
+        (userchoice == 'scissors' && pcchoice == 'rock')) {
+            console.log('LOSE')   
+    } else {
+        console.log('unexpected ending.. must be an error')
     }
 }
 
-playround()
+// //function playround(){
+//     for (let i = 0; i < 5; i++) {
+//         game()
+        
+//     }
+// }
+
+//playround()
 
 
 
 
-for (let i = 0; i < 5; i++) {
-    console.log(i)
-}
+// for (let i = 0; i < 5; i++) {
+//     console.log(i)
+// }
