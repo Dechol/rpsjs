@@ -9,19 +9,24 @@
 
 console.log('Rock Paper Scissors? ')
 
-userchoice = prompt('rock paper or scissors?')
+playrounds()
 
-console.log('you pick',userchoice.toLowerCase())
 
-pcchoice = getpcchoice()
 
-playround();
+
 
 
 //numberofrounds = 5
 //z = 'rock'
 
 //pc = getcomputerchoice();
+
+function playhand(){
+    userchoice = prompt('rock paper or scissors?')
+    console.log('you pick',userchoice.toLowerCase())
+    pcchoice = getpcchoice()
+    whowins();
+}
 
 function getpcchoice(){
     randomnumber = Math.floor(Math.random()*3)
@@ -39,7 +44,7 @@ function getpcchoice(){
     }
 }
 
-function playround(){
+function whowins(){
     if (userchoice === pcchoice){
             console.log('TIE')
     } else if (
@@ -57,18 +62,10 @@ function playround(){
     }
 }
 
-// //function playround(){
-//     for (let i = 0; i < 5; i++) {
-//         game()
-        
-//     }
-// }
-
-//playround()
+function playrounds(){
+    for (i = 0; i < 3; i++) {
+        playhand()
+    }
+}
 
 
-
-
-// for (let i = 0; i < 5; i++) {
-//     console.log(i)
-// }
