@@ -3,26 +3,34 @@
 //pc hand
 //compare hands
 //display winner
+//playrounds
 
-//const button = document.querySelector('.rock')
-//console.log(button.innerHTML)
+//choose number of rounds
+//link game to DOM
+//show output 
+
+//let rockbutton = document.querySelector('.rock')
+const buttons = document.querySelectorAll('button')
+
+buttons.forEach((button)=>{
+    button.addEventListener('click', () => {
+        console.log(button.innerHTML)
+    })
+})
+
+// rockbutton.addEventListener('click', () =>{
+//     alert('hellow world')
+// })
+
+let numberofrounds = 3
 
 console.log('Rock Paper Scissors? ')
 
-playrounds()
-
-
-
-
-
-
-//numberofrounds = 5
-//z = 'rock'
-
-//pc = getcomputerchoice();
+playrounds();
 
 function playhand(){
-    userchoice = prompt('rock paper or scissors?')
+    userchoice = 'rock'
+    //userchoice = prompt('rock paper or scissors?')
     console.log('you pick',userchoice.toLowerCase())
     pcchoice = getpcchoice()
     whowins();
@@ -63,9 +71,6 @@ function whowins(){
 }
 
 function playrounds(){
-    for (i = 0; i < 3; i++) {
+    for (i = 0; i < numberofrounds; i++) {
         playhand()
-    }
-}
-
-
+    }};
