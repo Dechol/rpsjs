@@ -15,6 +15,7 @@ const buttons = document.querySelectorAll('button')
 buttons.forEach((button)=>{
     button.addEventListener('click', () => {
         console.log(button.innerHTML)
+        playhand(button.innerHTML)
     })
 })
 
@@ -22,16 +23,16 @@ buttons.forEach((button)=>{
 //     alert('hellow world')
 // })
 
-let numberofrounds = 3
+//let numberofrounds = 3
 
 console.log('Rock Paper Scissors? ')
 
-playrounds();
+//playrounds();
 
-function playhand(){
-    userchoice = 'rock'
+function playhand(x){
+    userchoice = x
     //userchoice = prompt('rock paper or scissors?')
-    console.log('you pick',userchoice.toLowerCase())
+    console.log('you pick',userchoice)
     pcchoice = getpcchoice()
     whowins();
 }
@@ -70,7 +71,7 @@ function whowins(){
     }
 }
 
-function playrounds(){
-    for (i = 0; i < numberofrounds; i++) {
-        playhand()
-    }};
+// function playrounds(){
+//     for (i = 0; i < numberofrounds; i++) {
+//         playhand()
+//     }};
