@@ -1,75 +1,72 @@
-//simple rps
-//user hand
-//pc hand
-//compare hands
-//display winner
-//playrounds
-
-//choose number of rounds
-//link game to DOM
-//show output 
-
-//let rockbutton = document.querySelector('.rock')
 const buttons = document.querySelectorAll('button')
 const output = document.querySelector('.output')
+const score = document.querySelector('.score')
+
 
 buttons.forEach((button)=>{
     button.addEventListener('click', () => {
         //console.log(button.innerHTML)
         playhand(button.innerHTML)
-        output.innerHTML = 'playing the hand'
     })
 })
 
-// rockbutton.addEventListener('click', () =>{
-//     alert('hellow world')
-// })
-
-//let numberofrounds = 3
-
-console.log('Rock Paper Scissors? ')
-
-//playrounds();
-
-function playhand(x){
-    userchoice = x
-    //userchoice = prompt('rock paper or scissors?')
-    console.log('you pick',userchoice)
+function playhand(buttonpress){
+    userchoice = buttonpress
     pcchoice = getpcchoice()
-    whowins();
+    winner = whowins()
+    const div = document.createElement('div')
+    div.textContent = `${winner} - you:${userchoice} v pc:${pcchoice}`
+    output.appendChild(div)
+    updatescore(winner)
+    console.log(userpoints,pcpoints)
+}
+
+let userpoints = 0
+let pcpoints = 0
+function updatescore(x){
+    if( x == 'win'){
+        userpoints++
+    }
+    if (x == 'lose'){
+        pcpoints++
+    }
+    score.textContent = `user: ${userpoints} v pc: ${pcpoints}`
+}
+
+function resultsoutput (result){
+    div.textContent = result
+    output.appendChild('div')
 }
 
 function getpcchoice(){
     randomnumber = Math.floor(Math.random()*3)
     if (randomnumber === 0){
-        console.log('computer picks rock');
         return 'rock';
     } else if (randomnumber===1) {
-        console.log('computer picks paper');
         return 'paper';
     } else if (randomnumber === 2){
-        console.log('computer picks scissors');
         return 'scissors';
     } else {
-        console.log('error');
+        console.log('pc picked a sausage.. something is wrong');
     }
 }
 
 function whowins(){
     if (userchoice === pcchoice){
-            console.log('TIE')
+            return 'tie'
     } else if (
         (userchoice == 'rock' && pcchoice == 'scissors')||
         (userchoice == 'paper' && pcchoice == 'rock')||
-        (userchoice == 'scissors' && pcchoice == 'paper')){
-            console.log('WIN')
+        (userchoice == 'scissors' && pcchoice == 'paper')){         
+            return 'win'
     } else if(
         (userchoice == 'rock' && pcchoice == 'paper')||
         (userchoice == 'paper' && pcchoice == 'scissors')||
         (userchoice == 'scissors' && pcchoice == 'rock')) {
-            console.log('LOSE')   
+            return 'lose'
     } else {
         console.log('unexpected ending.. must be an error')
+        return 'error'
     }
 }
 
