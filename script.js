@@ -11,11 +11,13 @@
 
 //let rockbutton = document.querySelector('.rock')
 const buttons = document.querySelectorAll('button')
+const output = document.querySelector('.output')
 
 buttons.forEach((button)=>{
     button.addEventListener('click', () => {
-        console.log(button.innerHTML)
+        //console.log(button.innerHTML)
         playhand(button.innerHTML)
+        output.innerHTML = 'playing the hand'
     })
 })
 
